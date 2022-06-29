@@ -10,8 +10,8 @@ namespace ConsoleMon
     {
         private int damage;
         private int energyCost;
-        private string name;
-        private string element = "Elementen.fire";
+        internal string name;
+        private Elementen element = Elementen.fire;
 
         public void UseOn(ConsoleMon target, ConsoleMon caster)
         {
@@ -24,9 +24,11 @@ namespace ConsoleMon
 
         }
 
-        internal Skill()
+        internal Skill(Skill copyFrom)
         {
-
+            this.damage = copyFrom.damage;
+            this.energyCost = copyFrom.energyCost;
+            this.name = copyFrom.name;
         }
     }
 }

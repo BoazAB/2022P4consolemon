@@ -8,16 +8,12 @@ namespace ConsoleMon
 {
     class ConsoleMon
     {
-        private int hp;
+        internal int hp;
         private float energy;
         private string name;
-        private string weakness = "Elementen.water";
+        private Elementen weakness = Elementen.water;
 
-        List<Skill> Skills = new List<Skill>();
-        class Skills
-        {
-
-        }
+        internal List<Skill> Skills = new List<Skill>();
 
         public void TakeDamage(int damage)
         {
@@ -26,6 +22,22 @@ namespace ConsoleMon
         public void DepleteEnergy(int energy)
         {
             this.energy = this.energy - energy;
+        }
+        internal ConsoleMon()
+        {
+
+        }
+        internal ConsoleMon(ConsoleMon copyFrom)
+        {
+            this.hp = copyFrom.hp;
+            this.energy = copyFrom.energy;
+            this.name = copyFrom.name;
+            this.Skills = copyFrom.Skills;
+            foreach (Skill skill in copyFrom.Skills)
+            {
+                Skill clone = new Skill(skill);
+                this.Skills.Add(clone);
+            }
         }
     }
 
